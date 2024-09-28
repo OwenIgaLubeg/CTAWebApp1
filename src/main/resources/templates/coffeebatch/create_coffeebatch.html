@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Coffee Batch</title>
+	
+	<style>
+	        @import url('https://fonts.googleapis.com/css2?family=Arial+Rounded+MT+Bold');
+
+	        body {
+	            background-image: url('/images/cofi2.jpeg');
+	            background-size: cover;
+	            background-repeat: no-repeat;
+	            background-position: center;
+	            color: rgb(200, 200, 200); 
+	            display: flex;
+	            flex-direction: column;
+	            min-height: 100vh;
+	            margin: 0;
+	            filter: brightness(1.02); 
+	        }
+
+	        nav {
+	            background-color: rgb(43, 0, 0); 
+	            color: white;
+	            padding: 15px;
+	            display: flex;
+	            justify-content: space-between;
+	            align-items: center;
+	            width: 100%;
+	            box-sizing: border-box;
+	            font-family: 'Arial Rounded MT Bold', sans-serif;
+	        }
+
+	        nav a {
+	            color: white;
+	            text-decoration: none;
+	            margin-left: 20px;
+	            font-weight: bold;
+	        }
+
+	        nav .right {
+	            margin-right: 20px;
+	        }
+	</style>
+</head>
+<body>
+	
+	<nav>
+	       <div class="left">
+	           <a th:href="@{/users}">Manage Users</a>
+	           <a th:href="@{/contact}">Contact UCDA</a>
+	       </div>
+	       <div class="right">
+	           <a th:href="@{/users/login}">Login</a>
+	           <a th:href="@{/users/register}">Register</a>
+	       </div>
+	   </nav>
+	
+    <h2>Create Coffee Batch</h2>
+
+    <form th:action="@{/coffeebatch/create}" th:object="${coffeebatch}" method="post">
+        <label for="batchName">Batch Name:</label>
+        <input type="text" id="batchName" th:field="*{batchName}" required/>
+        <br/>
+
+        <label for="currentStatus">Current Status:</label>
+        <input type="text" id="currentStatus" th:field="*{currentStatus}" required/>
+        <br/>
+
+        <label for="farmerId">Select Farmer:</label>
+        <select id="farmerId" name="farmerId" required>
+            <option th:each="farmer : ${farmers}" th:value="${farmer.farmerId}" th:text="${farmer.name}"></option>
+        </select>
+        <br/>
+
+        <label for="intermediaryId">Select Intermediary (Optional):</label>
+        <select id="intermediaryId" name="intermediaryId">
+            <option value="">--None--</option>
+            <option th:each="intermediary : ${intermediaries}" th:value="${intermediary.intermediaryId}" th:text="${intermediary.name}"></option>
+        </select>
+        <br/>
+
+        <label for="processorId">Select Processor (Optional):</label>
+        <select id="processorId" name="processorId">
+            <option value="">--None--</option>
+            <option th:each="processor : ${processors}" th:value="${processor.processorId}" th:text="${processor.name}"></option>
+        </select>
+        <br/>
+
+        <label for="exporterId">Select Exporter (Optional):</label>
+        <select id="exporterId" name="exporterId">
+            <option value="">--None--</option>
+            <option th:each="exporter : ${exporters}" th:value="${exporter.exporterId}" th:text="${exporter.name}"></option>
+        </select>
+        <br/>
+
+        <label for="roasterId">Select Roaster (Optional):</label>
+        <select id="roasterId" name="roasterId">
+            <option value="">--None--</option>
+            <option th:each="roaster : ${roasters}" th:value="${roaster.roasterId}" th:text="${roaster.name}"></option>
+        </select>
+        <br/>
+
+        <label for="associationId">Select Association (Optional):</label>
+        <select id="associationId" name="associationId">
+            <option value="">--None--</option>
+            <option th:each="association : ${associations}" th:value="${association.associationId}" th:text="${association.name}"></option>
+        </select>
+        <br/>
+
+        <label for="cafeteriaId">Select Cafeteria (Optional):</label>
+        <select id="cafeteriaId" name="cafeteriaId">
+            <option value="">--None--</option>
+            <option th:each="cafeteria : ${cafeterias}" th:value="${cafeteria.cafeteriaId}" th:text="${cafeteria.name}"></option>
+        </select>
+        <br/>
+
+        <button type="submit">Create Coffee Batch</button>
+    </form>
+
+    <a th:href="@{/coffeebatch}">Back to Coffee Batch List</a>
+	<a th:href="@{/}">Back to Home</a>
+</body>
+</html>
+

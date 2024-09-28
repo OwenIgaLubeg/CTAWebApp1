@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Associations</title>
+</head>
+<body>
+    <h1>Associations</h1>
+    <a th:href="@{/associations/new}">Create New Association</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Certifications</th>
+                <th>Training Materials</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="association : ${listAssociations}">
+                <td th:text="${association.associationId}"></td> 
+                <td th:text="${association.name}"></td>
+                <td th:text="${association.phoneNumber}"></td>
+                <td th:text="${association.email}"></td>
+                <td th:text="${association.certifications}"></td>
+                <td th:text="${association.trainingMaterials}"></td> 
+                <td>
+                    <a th:href="@{/associations/edit/{id}(id=${association.associationId})}">Edit</a>
+                    <a th:href="@{/associations/delete/{id}(id=${association.associationId})}"
+                       onclick="return confirm('Are you sure?')">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+	<a th:href="@{/}">Back to Home</a>
+</body>
+</html>
+

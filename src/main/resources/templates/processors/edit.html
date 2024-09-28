@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Processor</title>
+</head>
+<body>
+<h1>Edit Processor</h1>
+<form th:action="@{/processors/edit/{id}(id=${processor.processorId})}" th:object="${processor}" method="post">
+    <label>Name: <input type="text" th:field="*{name}" /></label><br>
+    <label>Type: <input type="text" th:field="*{type}" /></label><br>
+    <label>Phone Number: <input type="text" th:field="*{phoneNumber}" /></label><br>
+    <label>Email: <input type="email" th:field="*{email}" /></label><br>
+    <label>Location: <input type="text" th:field="*{location}" /></label><br>
+    <label>Processing Details: <textarea th:field="*{processingDetails}"></textarea></label><br>
+    <button type="submit">Update</button>
+</form>
+<a href="/processors">Back to List</a>
+<a th:href="@{/}">Back to Home</a>
+</body>
+</html>

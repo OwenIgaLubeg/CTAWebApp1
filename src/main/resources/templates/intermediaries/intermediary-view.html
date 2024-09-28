@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View Intermediary</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <h1>View Intermediary</h1>
+    <div>
+        <p><strong>ID:</strong> <span th:text="${intermediary.intermediaryId}"></span></p>
+        <p><strong>Name:</strong> <span th:text="${intermediary.name}"></span></p>
+        <p><strong>Region:</strong> <span th:text="${intermediary.region}"></span></p>
+        <p><strong>Phone Number:</strong> <span th:text="${intermediary.phoneNumber}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${intermediary.email}"></span></p>
+        <p><strong>User ID:</strong> <span th:text="${intermediary.userId}"></span></p>
+    </div>
+    <a th:href="@{/intermediaries}">Back to List</a>
+	<a th:href="@{/}">Back to Home</a>
+</body>
+</html>

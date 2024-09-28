@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Intermediaries List</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Arial+Rounded+MT+Bold');
+
+        body {
+            background-image: url('/images/cofi02.avif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: rgb(200, 200, 200); 
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            filter: brightness(1.02); 
+        }
+
+        nav {
+            background-color: rgb(43, 0, 0); 
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+            font-family: 'Arial Rounded MT Bold', sans-serif;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        nav .right {
+            margin-right: 20px;
+        }
+
+        h2 {
+            text-align: center; 
+            color: black; 
+            margin-top: 20px;
+        }
+
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ccc; 
+            text-align: left;
+            font-family: 'Arial Rounded MT Bold', sans-serif;
+            color: black; 
+        }
+
+        tr:nth-child(odd) {
+            background-color: purple; 
+        }
+
+        tr:nth-child(even) {
+            background-color: pink; 
+        }
+
+        th {
+            background-color: #004d00; 
+            color: white;
+            text-align: center;
+        }
+
+        .button-link {
+            background-color: blue;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .button-link:hover {
+            background-color: darkblue;
+        }
+
+        .top-button {
+            margin-left: 20px;
+            width: 5cm; 
+            display: inline-block;
+        }
+
+        .bottom-button {
+            margin-left: 20px;
+            width: 3cm;
+            display: inline-block;
+        }
+
+        .marquee-container {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7); 
+            color: white;
+            padding: 10px 0;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .marquee {
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: marquee 15s linear infinite;
+        }
+
+        @keyframes marquee {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        th, td {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="left">
+            <a th:href="@{/users}">Manage Users</a>
+            <a th:href="@{/contact}">Contact UCDA</a>
+        </div>
+        <div class="right">
+            <a th:href="@{/users/login}">Login</a>
+            <a th:href="@{/users/register}">Register</a>
+        </div>
+    </nav>
+
+    <h2>Intermediaries List</h2>
+
+    <a th:href="@{/intermediaries/new}" class="button-link top-button">Create New Intermediary</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Intermediary ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Location</th>
+                <th>User ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="intermediary : ${intermediaries}">
+                <td th:text="${intermediary.intermediaryId}"></td>
+                <td th:text="${intermediary.name}"></td>
+                <td th:text="${intermediary.email}"></td>
+                <td th:text="${intermediary.phoneNumber}"></td>
+                <td th:text="${intermediary.region}"></td>
+                <td th:text="${intermediary.user.userId}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/}" class="button-link bottom-button">Back to Home</a>
+
+    <div class="marquee-container">
+        <div class="marquee">
+            Intermediaries Play a key role in the Coffee journey by transporting and managing coffee between Farms and Processors.
+        </div>
+    </div>
+
+</body>
+</html>

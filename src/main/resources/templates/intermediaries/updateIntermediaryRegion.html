@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Intermediary Region</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Update Intermediary Region</h1>
+
+    <form action="#" th:action="@{/api/intermediaries/operations/update-region}" method="post">
+        <label for="ids">Intermediary IDs (comma-separated):</label>
+        <input type="text" id="ids" name="intermediaryIds" required>
+        
+        <label for="newRegion">New Region:</label>
+        <input type="text" id="newRegion" name="newRegion" required>
+        
+        <button type="submit">Update Region</button>
+    </form>
+
+    <div th:if="${updatedIntermediaries != null}">
+        <h2>Updated Intermediaries:</h2>
+        <ul>
+            <li th:each="intermediary : ${updatedIntermediaries}">
+                <span th:text="${intermediary.name}">Intermediary Name</span> - 
+                <span th:text="${intermediary.region}">New Region</span>
+            </li>
+        </ul>
+    </div>
+</body>
+<a th:href="@{/}">Back to Home</a>
+</html>

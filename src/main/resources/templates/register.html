@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Arial+Rounded+MT+Bold');
+
+        body {
+            background-image: url('/images/cofi4.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: rgb(200, 200, 200); 
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            filter: brightness(1.02); 
+        }
+
+        nav {
+            background-color: rgb(43, 0, 0); 
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+            font-family: 'Arial Rounded MT Bold', sans-serif;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        nav .right {
+            margin-right: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 400px; 
+            margin: auto;
+            margin-top: 30px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #ddd; 
+            border-radius: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            color: black;
+            font-family: 'Arial Rounded MT Bold', sans-serif;
+            margin-bottom: 20px;
+        }
+
+        label {
+            color: black;
+            margin-bottom: 5px;
+            font-family: 'Arial Rounded MT Bold', sans-serif;
+        }
+
+        input[type="text"], input[type="password"], input[type="email"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        button {
+            padding: 10px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+
+        .links-container {
+            display: flex;
+            justify-content: center;
+            gap: 0.5cm; 
+            margin-top: 15px;
+        }
+
+        .links-container a {
+            text-decoration: none;
+            color: white;
+            background-color: blue;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+
+        .links-container a:hover {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="left">
+            <a th:href="@{/users}">Manage Users</a>
+            <a th:href="@{/contact}">Contact UCDA</a>
+        </div>
+        <div class="right">
+            <a th:href="@{/users/login}">Login</a>
+            <a th:href="@{/users/register}">Register</a>
+        </div>
+    </nav>
+
+    <form th:action="@{/users/register}" method="post">
+        <h2>REGISTER</h2>
+        <label for="name">Username:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your username" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required><br>
+
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter your phone number" required><br>
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" placeholder="Enter your location" required><br>
+
+        <label for="role">Role:</label>
+        <input type="text" id="role" name="role" placeholder="Enter your role" required><br>
+
+        <button type="submit">Register</button>
+
+        <div class="links-container">
+            <a th:href="@{/users/login}">Back to Login</a>
+            <a th:href="@{/}">Back to Home</a>
+        </div>
+    </form>
+
+</body>
+</html>

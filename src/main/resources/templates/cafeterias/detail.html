@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cafeteria Details</title>
+</head>
+<body>
+<h1>Cafeteria Details</h1>
+<p><strong>ID:</strong> <span th:text="${cafeteria.cafeteriaId}"></span></p>
+<p><strong>Name:</strong> <span th:text="${cafeteria.name}"></span></p>
+<p><strong>Phone Number:</strong> <span th:text="${cafeteria.phoneNumber}"></span></p>
+<p><strong>Email:</strong> <span th:text="${cafeteria.email}"></span></p>
+<p><strong>Location:</strong> <span th:text="${cafeteria.location}"></span></p>
+<p><strong>Served Coffee Details:</strong> <span th:text="${cafeteria.servedCoffeeDetails}"></span></p>
+
+<a th:href="@{/cafeterias/edit/{id}(id=${cafeteria.cafeteriaId})}">Edit</a>
+<form th:action="@{/cafeterias/delete/{id}(id=${cafeteria.cafeteriaId})}" method="post">
+    <button type="submit">Delete</button>
+</form>
+<a th:href="@{/cafeterias}">Back to List</a>
+<a th:href="@{/}">Back to Home</a>
+</body>
+</html>

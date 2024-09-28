@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Arial+Rounded+MT+Bold');
+
+        body {
+            background-image: url('/images/cofi2.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: rgb(200, 200, 200); 
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            filter: brightness(1.02); 
+        }
+
+        nav {
+            background-color: rgb(43, 0, 0); 
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+            font-family: 'Arial Rounded MT Bold', sans-serif;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        nav .right {
+            margin-right: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 350px;
+            margin: auto;
+            margin-top: 50px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            color: black;
+            font-family: 'Arial Rounded MT Bold', sans-serif;
+            margin-bottom: 20px; 
+        }
+
+        label {
+            color: black;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="password"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        button {
+            padding: 10px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+
+        .form-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .form-footer a {
+            text-decoration: none;
+            color: white;
+            background-color: blue;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+
+        .form-footer a:hover {
+            background-color: darkblue;
+        }
+
+        .bottom-left-button {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .bottom-left-button:hover {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="left">
+            <a th:href="@{/users}">Manage Users</a>
+            <a th:href="@{/contact}">Contact UCDA</a>
+        </div>
+        <div class="right">
+            <a th:href="@{/users/login}">Login</a>
+            <a th:href="@{/users/register}">Register</a>
+        </div>
+    </nav>
+
+    <form th:action="@{/users/login}" method="post">
+        <h2>LOGIN</h2>
+        
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+        <button type="submit">Login</button>
+        
+        <div class="form-footer">
+            <a th:href="@{/users/register}">Register</a>
+        </div>
+    </form>
+
+    <div th:if="${error}">
+        <p th:text="${error}" style="color: red;"></p>
+    </div>
+
+    <a th:href="@{/}" class="bottom-left-button">Back to Home</a>
+
+</body>
+</html>
+

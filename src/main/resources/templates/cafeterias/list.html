@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cafeterias</title>
+</head>
+<body>
+<h1>Cafeterias</h1>
+<a th:href="@{/cafeterias/new}">Create New Cafeteria</a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Location</th>
+        <th>Served Coffee Details</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cafeteria : ${cafeterias}">
+        <td th:text="${cafeteria.cafeteriaId}"></td>
+        <td th:text="${cafeteria.name}"></td>
+        <td th:text="${cafeteria.phoneNumber}"></td>
+        <td th:text="${cafeteria.email}"></td>
+        <td th:text="${cafeteria.location}"></td>
+        <td th:text="${cafeteria.servedCoffeeDetails}"></td>
+        <td>
+            <a th:href="@{/cafeterias/{id}(id=${cafeteria.cafeteriaId})}">View</a> |
+            <a th:href="@{/cafeterias/edit/{id}(id=${cafeteria.cafeteriaId})}">Edit</a>
+            <form th:action="@{/cafeterias/delete/{id}(id=${cafeteria.cafeteriaId})}" method="post" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/}">Back to Home</a>
+</body>
+</html>

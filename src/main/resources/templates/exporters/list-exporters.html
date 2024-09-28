@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Exporters List</title>
+</head>
+<body>
+    <h1>List of Exporters</h1>
+    <a th:href="@{/exporters/new}">Add New Exporter</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Location</th>
+                <th>Shipping Details</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="exporter : ${exporters}">
+                <td th:text="${exporter.exporterId}"></td> 
+                <td th:text="${exporter.name}"></td>
+                <td th:text="${exporter.phoneNumber}"></td>
+                <td th:text="${exporter.email}"></td>
+                <td th:text="${exporter.location}"></td>
+                <td th:text="${exporter.shipping_details}"></td> 
+                <td>
+                    <a th:href="@{/exporters/edit/{id}(id=${exporter.exporterId})}">Edit</a> |
+                    <a th:href="@{/exporters/delete/{id}(id=${exporter.exporterId})}" onclick="return confirm('Are you sure?');">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+	<a th:href="@{/}">Back to Home</a>
+</body>
+</html>
+

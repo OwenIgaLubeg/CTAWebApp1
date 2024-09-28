@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Coffee Batch</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Edit Coffee Batch</h1>
+    <form th:action="@{/coffeebatch/edit/{id}(id=${coffeebatch.batchId})}" th:object="${coffeebatch}" method="post">
+        <div>
+            <label for="batchName">Batch Name:</label>
+            <input type="text" id="batchName" th:field="*{batchName}" required/>
+        </div>
+        <div>
+            <label for="currentStatus">Current Status:</label>
+            <input type="text" id="currentStatus" th:field="*{currentStatus}" required/>
+        </div>
+
+        <div>
+            <button type="submit">Save</button>
+            <a href="/coffeebatch">Cancel</a>
+        </div>
+    </form>
+	<a th:href="@{/}">Back to Home</a>
+</body>
+</html>

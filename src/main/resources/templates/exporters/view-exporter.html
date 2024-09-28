@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View Exporter</title>
+</head>
+<body>
+    <h1>Exporter Details</h1>
+    <p>ID: <span th:text="${exporter.exporterId}"></span></p> 
+    <p>Name: <span th:text="${exporter.name}"></span></p>
+    <p>Phone Number: <span th:text="${exporter.phoneNumber}"></span></p>
+    <p>Email: <span th:text="${exporter.email}"></span></p>
+    <p>Location: <span th:text="${exporter.location}"></span></p>
+    <p>Shipping Details: <span th:text="${exporter.shipping_details}"></span></p> 
+    <a th:href="@{/exporters}">Back to Exporters List</a>
+	<a th:href="@{/}">Back to Home</a>
+</body>
+</html>

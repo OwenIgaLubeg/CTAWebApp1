@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Roasting Firm Details</title>
+</head>
+<body>
+<h1>Roasting Firm Details</h1>
+<p><strong>ID:</strong> <span th:text="${roastingFirm.roasterId}"></span></p>
+<p><strong>Name:</strong> <span th:text="${roastingFirm.name}"></span></p>
+<p><strong>Phone Number:</strong> <span th:text="${roastingFirm.phoneNumber}"></span></p>
+<p><strong>Email:</strong> <span th:text="${roastingFirm.email}"></span></p>
+<p><strong>Location:</strong> <span th:text="${roastingFirm.location}"></span></p>
+<p><strong>Roast Profiles:</strong> <span th:text="${roastingFirm.roastProfiles}"></span></p>
+
+<a th:href="@{/roastingfirms/edit/{id}(id=${roastingFirm.roasterId})}">Edit</a>
+<form th:action="@{/roastingfirms/delete/{id}(id=${roastingFirm.roasterId})}" method="post">
+    <button type="submit">Delete</button>
+</form>
+<a th:href="@{/roastingfirms}">Back to List</a>
+<a th:href="@{/}">Back to Home</a>
+</body>
+</html>
+

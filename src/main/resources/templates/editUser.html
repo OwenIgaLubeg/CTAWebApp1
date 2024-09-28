@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit User</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Arial+Rounded+MT+Bold');
+
+        body {
+            background-image: url('/images/cofi1.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: rgb(200, 200, 200); 
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            filter: brightness(1.05);
+        }
+
+        nav {
+            background-color: rgb(43, 0, 0); 
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+            font-family: 'Arial Rounded MT Bold', sans-serif;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        nav .right {
+            margin-right: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: rgb(64, 0, 0); 
+            margin-top: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 420px; 
+            margin: auto;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ddd; 
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            color: black; 
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: black;
+        }
+
+        input::placeholder {
+            color: #999; 
+        }
+
+        button[type="submit"] {
+            background-color: blue;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        button[type="submit"]:hover {
+            background-color: darkblue;
+        }
+
+        .button-link {
+            background-color: blue;
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .button-link:hover {
+            background-color: darkblue;
+        }
+
+        .bottom-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="left">
+            <a th:href="@{/users}">Manage Users</a>
+            <a th:href="@{/contact}">Contact UCDA</a>
+        </div>
+        <div class="right">
+            <a th:href="@{/users/login}">Login</a>
+            <a th:href="@{/users/register}">Register</a>
+        </div>
+    </nav>
+
+    <h2>Edit User</h2>
+
+    <form th:action="@{/users/update/{id}(id=${user.userId})}" method="post">
+        <label for="name">Username:</label>
+        <input type="text" id="name" name="name" th:value="${user.name}" placeholder="Enter username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" th:value="${user.password}" placeholder="Enter password" required>
+
+        <label for="role">Role:</label>
+        <input type="text" id="role" name="role" th:value="${user.role}" placeholder="Enter role" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" th:value="${user.email}" placeholder="Enter email" required>
+
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" th:value="${user.phoneNumber}" placeholder="Enter phone number" required>
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" th:value="${user.location}" placeholder="Enter location" required>
+
+        <button type="submit">Update</button>
+    </form>
+
+    <div class="bottom-buttons">
+        <a th:href="@{/users}" class="button-link">Back to List</a>
+        <a th:href="@{/}" class="button-link">Back to Home</a>
+    </div>
+
+</body>
+</html>

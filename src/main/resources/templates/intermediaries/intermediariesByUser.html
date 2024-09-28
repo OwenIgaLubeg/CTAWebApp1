@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Intermediaries by User</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Intermediaries by User</h1>
+
+    <form action="#" th:action="@{/api/intermediaries/operations/user/{userId}(userId=${userId})}" method="get">
+        <label for="userId">User ID:</label>
+        <input type="number" id="userId" name="userId" required>
+        <button type="submit">Get Intermediaries</button>
+    </form>
+
+    <div th:if="${intermediaries != null}">
+        <h2>Results:</h2>
+        <ul>
+            <li th:each="intermediary : ${intermediaries}">
+                <span th:text="${intermediary.name}">Intermediary Name</span> - 
+                <span th:text="${intermediary.region}">Region</span>
+            </li>
+        </ul>
+    </div>
+	<a th:href="@{/}">Back to Home</a>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Coffee Batches</title>
+</head>
+<body>
+    <h2>Coffee Batches</h2>
+    <a th:href="@{/coffeebatch/create}">Create New Batch</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Batch ID</th>
+                <th>Batch Name</th>
+                <th>Current Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody th:if="${coffeebatches}">
+            <tr th:each="batch : ${coffeebatches}">
+                <td th:text="${batch.batchId}">1</td>
+                <td th:text="${batch.batchName}">Batch Name</td>
+                <td th:text="${batch.currentStatus}">Current Status</td>
+                <td>
+                    <a th:href="@{'/coffeebatch/' + ${batch.batchId}}">View</a>
+                    <a th:href="@{'/coffeebatch/edit/' + ${batch.batchId}}">Edit</a>
+                    <a th:href="@{'/coffeebatch/delete/' + ${batch.batchId}}" onclick="return confirm('Are you sure?');">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+        <p th:if="${coffeebatches.size() == 0}">No coffee batches found.</p>
+    </table>
+	<a th:href="@{/}">Back to Home</a>
+</body>
+</html>
+

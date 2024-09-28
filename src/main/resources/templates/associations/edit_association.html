@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Association</title>
+</head>
+<body>
+    <h1>Edit Association</h1>
+    <form th:action="@{/associations/edit/{id}(id=${association.associationId})}" th:object="${association}" method="post">
+        <input type="hidden" th:field="*{associationId}">
+        <label for="name">Name:</label>
+        <input type="text" id="name" th:field="*{name}" required><br>
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" th:field="*{phoneNumber}" required><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" th:field="*{email}" required><br>
+        <label for="certifications">Certifications:</label>
+        <input type="text" id="certifications" th:field="*{certifications}"><br>
+        <label for="trainingMaterials">Training Materials:</label>
+        <input type="text" id="trainingMaterials" th:field="*{trainingMaterials}"><br>
+        <button type="submit">Save</button>
+    </form>
+    <a th:href="@{/associations}">Back to List</a>
+	<a th:href="@{/}">Back to Home</a>
+</body>
+</html>

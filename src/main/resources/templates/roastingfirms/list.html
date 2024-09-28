@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Roasting Firms</title>
+</head>
+<body>
+<h1>Roasting Firms</h1>
+<a th:href="@{/roastingfirms/new}">Create New Roasting Firm</a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Location</th>
+        <th>Roast Profiles</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="roastingFirm : ${roastingFirms}">
+        <td th:text="${roastingFirm.roasterId}"></td>
+        <td th:text="${roastingFirm.name}"></td>
+        <td th:text="${roastingFirm.phoneNumber}"></td>
+        <td th:text="${roastingFirm.email}"></td>
+        <td th:text="${roastingFirm.location}"></td>
+        <td th:text="${roastingFirm.roastProfiles}"></td>
+        <td>
+            <a th:href="@{/roastingfirms/{id}(id=${roastingFirm.roasterId})}">View</a> |
+            <a th:href="@{/roastingfirms/edit/{id}(id=${roastingFirm.roasterId})}">Edit</a>
+            <form th:action="@{/roastingfirms/delete/{id}(id=${roastingFirm.roasterId})}" method="post" th:object="${roastingFirm}">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/}">Back to Home</a>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update Exporter</title>
+</head>
+<body>
+    <h1>Update Exporter</h1>
+   
+    <form th:action="@{'/exporters/edit/' + ${exporter.exporterId}}" th:object="${exporter}" method="post">
+        <label>Name:</label>
+        <input type="text" th:field="*{name}" required/><br/>
+        
+        <label>Phone Number:</label>
+        <input type="text" th:field="*{phoneNumber}" required/><br/>
+        
+        <label>Email:</label>
+        <input type="email" th:field="*{email}" required/><br/>
+        
+        <label>Location:</label>
+        <input type="text" th:field="*{location}" required/><br/>
+        
+        <label>Shipping Details:</label>
+        <textarea th:field="*{shipping_details}" required></textarea><br/>
+        
+        <button type="submit">Update</button>
+    </form>
+
+    <a th:href="@{/exporters}">Back to Exporters List</a>
+    <a th:href="@{/}">Back to Home</a>
+</body>
+</html>

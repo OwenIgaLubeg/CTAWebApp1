@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Cafeteria</title>
+</head>
+<body>
+<h1>Edit Cafeteria</h1>
+<form th:action="@{/cafeterias/edit/{id}(id=${cafeteria.cafeteriaId})}" th:object="${cafeteria}" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" th:field="*{name}" required/><br/>
+
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="text" id="phoneNumber" th:field="*{phoneNumber}" required/><br/>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" th:field="*{email}" required/><br/>
+
+    <label for="location">Location:</label>
+    <input type="text" id="location" th:field="*{location}" required/><br/>
+
+    <label for="servedCoffeeDetails">Served Coffee Details:</label>
+    <input type="text" id="servedCoffeeDetails" th:field="*{servedCoffeeDetails}" /><br/>
+
+    <button type="submit">Update</button>
+</form>
+<a th:href="@{/cafeterias}">Back to List</a>
+<a th:href="@{/}">Back to Home</a>
+</body>
+</html>

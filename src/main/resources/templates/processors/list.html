@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Processors List</title>
+</head>
+<body>
+<h1>Processors List</h1>
+<a href="/processors/create">Create New Processor</a>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Location</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="processor : ${processors}">
+        <td th:text="${processor.processorId}">1</td>
+        <td th:text="${processor.name}">Elite Hulling Co.</td>
+        <td th:text="${processor.type}">Huller</td>
+        <td th:text="${processor.phoneNumber}">256711234567</td>
+        <td th:text="${processor.email}">contact@elitehulling.com</td>
+        <td th:text="${processor.location}">Mbarara, Uganda</td>
+        <td>
+            <a th:href="@{/processors/edit/{id}(id=${processor.processorId})}">Edit</a>
+            <a th:href="@{/processors/delete/{id}(id=${processor.processorId})}" 
+               onclick="return confirm('Are you sure you want to delete this processor?');">Delete</a>
+        </td>
+    </tr>
+</table>
+<a th:href="@{/}">Back to Home</a>
+</body>
+</html>
